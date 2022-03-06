@@ -1,3 +1,87 @@
+// {
+//     "env": {
+//         "browser": true,
+//         "es2021": true
+//     },
+//     "extends": [
+//         "plugin:react/recommended",
+//         "airbnb"
+//     ],
+//     "parser": "@typescript-eslint/parser",
+//     "parserOptions": {
+//         "ecmaFeatures": {
+//             "jsx": true
+//         },
+//         "ecmaVersion": "latest",
+//         "sourceType": "module"
+//     },
+//     "plugins": [
+//         "react",
+//         "@typescript-eslint"
+//     ],
+//     "rules": {
+//     }
+// }
+
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "node": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+      },
+      "typescript": {} // this loads <rootdir>/tsconfig.json to eslint
+    }
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "rules": {
+    "no-shadow": "off",
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": { "multiline": true },
+        "ImportDeclaration": "never",
+        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ]
+  }
 }
