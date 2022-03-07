@@ -14,9 +14,3 @@ export const ReportLink = styled.a`
     }
   }
 `;
-
-export const ReportLinkLabel = styled.span``;
-
-export const ReportLinkSize = styled.span`
-  margin-left: 5px;
-`;

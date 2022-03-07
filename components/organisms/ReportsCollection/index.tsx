@@ -1,4 +1,5 @@
 /* eslint-disable object-curly-newline */
+import * as React from 'react';
 import {
   ReportCategory,
   ReportDatetime,
@@ -8,20 +9,23 @@ import {
   ReportLink,
   NoDataMsg,
 } from 'components/atoms';
-import * as React from 'react';
-import { useSelector } from 'react-redux';
-import { RootState } from 'state/rootReducer';
 import { DownloadFiles } from 'components/organisms/DownloadFiles';
 import { compareYear, compareTags, compareInput } from 'utils';
+import { DataElement, FilterParams } from 'state-types/reports';
+import { TagsArray } from 'components/molecules';
 import { List, ListItem, LeftWrapper, RightWrapper, ActionWrapper } from './style';
 
-export const ReportsCollection: React.FC = () => {
-  const {
-    data,
-    filter: { input, select },
-    activeTags,
-  } = useSelector((state: RootState) => state.reports);
+export interface ReportCollectionProps {
+  data: DataElement[];
+  filter: FilterParams;
+  activeTags: TagsArray;
+}
 
+export const ReportsCollection: React.FC<ReportCollectionProps> = ({
+  data,
+  filter: { input, select },
+  activeTags,
+}) => {
   const filteredData = React.useMemo(() => {
     if (data.length > 0) {
       return data.filter((report) => {

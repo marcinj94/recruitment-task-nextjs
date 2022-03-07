@@ -1,4 +1,4 @@
-import { DataElement } from 'state/types/reports';
+import { DataElement } from 'state-types/reports';
 import { compareInput } from '.';
 
 describe('Compare string value from input to report params', () => {

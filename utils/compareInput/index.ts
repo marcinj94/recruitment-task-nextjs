@@ -1,4 +1,4 @@
-import { DataElement } from 'state/types/reports';
+import { DataElement } from 'state-types/reports';
 
 export const compareInput = (report: DataElement, filterValue: string) => {
   const lowerValue = filterValue.toLowerCase();

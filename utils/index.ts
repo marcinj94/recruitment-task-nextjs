@@ -4,3 +4,5 @@ export * from './compareInput';
 export * from './compareTags';
 export * from './compareYear';
 export * from './formatFilesize';
+export * from './formatFilename';
+export * from './getFileinfo';

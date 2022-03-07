@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DEFAULT_TAGS } from 'state/types/reports';
+import { DEFAULT_TAGS } from 'state-types/reports';
 import { Label, Select, Option, StyledIcon } from './style';
 
 interface CustomSelectProps {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FileElement } from 'state/types/reports';
-import { ReportLink, ReportLinkLabel, ReportLinkSize } from 'components/atoms';
-import { formatFilesize } from 'utils';
+import { FileElement } from 'state-types/reports';
+import { ReportLink } from 'components/atoms';
+import { getFileinfo } from 'utils';
 import { AccordionMenu } from 'components/organisms';
 
 interface DownloadFilesProps {
@@ -16,10 +16,7 @@ export const DownloadFiles: React.FC<DownloadFilesProps> = ({ files }) => {
   return (
     <>
       {files.length === 1 && (
-        <ReportLink href="#">
-          <ReportLinkLabel>{`${files[0].filename}.pdf`}</ReportLinkLabel>
-          <ReportLinkSize>({formatFilesize(files[0].filesize)})</ReportLinkSize>
-        </ReportLink>
+        <ReportLink href="#">{getFileinfo(files[0].filename, files[0].filesize)}</ReportLink>
       )}
       {files.length > 1 && <AccordionMenu onClick={handleToggle} active={isOpen} files={files} />}
     </>

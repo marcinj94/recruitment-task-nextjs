@@ -1,18 +1,27 @@
-import { CustomSelect, RoundedButton, TextInput, WhiteSection } from 'components/atoms';
 import * as React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'state/rootReducer';
-import { Tags } from 'components/molecules/Tags';
-import { setFilterParams, setFilterSelect } from 'state/reducers/reports';
+import { CustomSelect, RoundedButton, TextInput, WhiteSection } from 'components/atoms';
+import { Tags, TagsArray } from 'components/molecules/Tags';
+import { DataElement } from 'state-types/reports';
 import { BarWrapper } from './style';
 
-export const FilterBar: React.FC = () => {
-  const dispatch = useDispatch();
+interface FilterBarProps {
+  data: DataElement[];
+  setFilterInput: React.Dispatch<React.SetStateAction<string>>;
+  setFilterSelect: React.Dispatch<React.SetStateAction<string>>;
+  activeTags: TagsArray;
+  setActiveTags: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+export const FilterBar: React.FC<FilterBarProps> = ({
+  data,
+  setFilterInput,
+  setFilterSelect,
+  activeTags,
+  setActiveTags,
+}) => {
   // local state
   const [input, setInput] = React.useState('');
   const [select, setSelect] = React.useState('');
-  // global state
-  const data = useSelector((state: RootState) => state.reports.data);
 
   const options = React.useMemo(() => {
     const years = data.reduce((acc: number[], value) => {
@@ -37,7 +46,7 @@ export const FilterBar: React.FC = () => {
   React.useEffect(() => {
     if (options.length > 0) {
       setSelect(options[0]);
-      dispatch(setFilterSelect(options[0]));
+      setFilterSelect(options[0]);
     }
   }, [options]);
 
@@ -50,12 +59,8 @@ export const FilterBar: React.FC = () => {
   };
 
   const handleSearch = () => {
-    dispatch(
-      setFilterParams({
-        input,
-        select,
-      }),
-    );
+    setFilterInput(input);
+    setFilterSelect(select);
   };
 
   return (
@@ -78,7 +83,7 @@ export const FilterBar: React.FC = () => {
           Wyszukaj
         </RoundedButton>
       </BarWrapper>
-      <Tags availableTags={availableTags} />
+      <Tags availableTags={availableTags} activeTags={activeTags} setActiveTags={setActiveTags} />
     </WhiteSection>
   );
 };

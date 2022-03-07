@@ -1,19 +1,17 @@
 import * as React from 'react';
 import { TagButton } from 'components/atoms';
-import { useDispatch, useSelector } from 'react-redux';
-import { setActiveTag } from 'state/reducers/reports';
-import { RootState } from 'state/rootReducer';
 import { removeItemFromArray } from 'utils';
-import { DEFAULT_TAGS } from 'state/types/reports';
+import { DEFAULT_TAGS } from 'state-types/reports';
 import { ListItem, List } from './style';
 
-interface TagsProps {
-  availableTags: string[];
-}
-export const Tags: React.FC<TagsProps> = ({ availableTags }) => {
-  const dispatch = useDispatch();
-  const { activeTags } = useSelector((state: RootState) => state.reports);
+export type TagsArray = string[];
 
+interface TagsProps {
+  availableTags: TagsArray;
+  activeTags: TagsArray;
+  setActiveTags: React.Dispatch<React.SetStateAction<string[]>>;
+}
+export const Tags: React.FC<TagsProps> = ({ availableTags, activeTags, setActiveTags }) => {
   const onClick = (id: string) => {
     let tags = [...activeTags];
     if (id !== DEFAULT_TAGS.ALL) {
@@ -35,7 +33,7 @@ export const Tags: React.FC<TagsProps> = ({ availableTags }) => {
     } else {
       tags = [DEFAULT_TAGS.ALL];
     }
-    dispatch(setActiveTag(tags));
+    setActiveTags(tags);
   };
 
   return (

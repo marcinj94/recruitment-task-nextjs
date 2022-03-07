@@ -1,4 +1,4 @@
-import { DEFAULT_TAGS } from 'state/types/reports';
+import { DEFAULT_TAGS } from 'state-types/reports';
 import { compareTags } from '.';
 
 describe('Compare category to activeTags array', () => {

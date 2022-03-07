@@ -1,4 +1,4 @@
-import { DEFAULT_TAGS } from 'state/types/reports';
+import { DEFAULT_TAGS } from 'state-types/reports';
 
 export const compareYear = (timestamp: number, filterValue: string) => {
   const date = new Date(timestamp);

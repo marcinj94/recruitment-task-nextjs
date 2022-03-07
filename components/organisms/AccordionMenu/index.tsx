@@ -1,8 +1,8 @@
 /* eslint-disable object-curly-newline */
-import { ReportLink, ReportLinkLabel, ReportLinkSize } from 'components/atoms';
+import { ReportLink } from 'components/atoms';
 import * as React from 'react';
-import { FileElement } from 'state/types/reports';
-import { formatFilesize } from 'utils';
+import { FileElement } from 'state-types/reports';
+import { getFileinfo } from 'utils';
 import {
   ToggleButton,
   ButtonLabel,
@@ -31,10 +31,7 @@ export const AccordionMenu: React.FC<AccordionMenuProps> = ({ onClick, active, f
       <List>
         {files.map(({ filename, filesize }) => (
           <ListItem key={`${filename}_${filesize}`}>
-            <ReportLink href="#">
-              <ReportLinkLabel>{formatFilesize(filesize)}</ReportLinkLabel>
-              <ReportLinkSize>({`${filename}.pdf`})</ReportLinkSize>
-            </ReportLink>
+            <ReportLink href="#">{getFileinfo(filename, filesize)}</ReportLink>
           </ListItem>
         ))}
       </List>
