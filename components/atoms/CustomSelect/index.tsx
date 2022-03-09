@@ -15,13 +15,15 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({
   flexOrder,
 }) => (
   <Label flexOrder={flexOrder}>
-    <Select value={value} onChange={onChange}>
+    <Select value={value} onChange={onChange} data-testid="select">
       {options.map((id) => (
-        <Option key={id} value={id}>
+        <Option key={id} value={id} data-testid="select-option">
           {id}
         </Option>
       ))}
-      <Option value={DEFAULT_TAGS.ALL}>Wszystkie</Option>
+      <Option value={DEFAULT_TAGS.ALL} data-testid="select-option">
+        Wszystkie
+      </Option>
     </Select>
     <StyledIcon />
   </Label>
