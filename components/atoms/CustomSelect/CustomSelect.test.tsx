@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as React from 'react';
-import { render, screen, RenderResult } from '@testing-library/react';
+import { render, RenderResult } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from 'components/theme/GlobalStyle';
@@ -8,13 +7,10 @@ import { theme } from 'components/theme/theme';
 import { CustomSelect } from '.';
 import '@testing-library/jest-dom';
 
-describe('Tests for simple-page', () => {
+describe('Tests for CustomSelect component', () => {
   const options = ['🍎', '🍌', '☘️', '🚀'];
   const value = options[2];
-  let methods: RenderResult<
-    typeof import('C:/projects/tutorials/recruitment-task-nextjs/node_modules/@testing-library/dom/types/queries'),
-    HTMLElement
-  >;
+  let methods: RenderResult;
   let selectOptions: HTMLOptionElement[];
   let select: HTMLSelectElement;
 
